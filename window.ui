@@ -223,19 +223,6 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QToolButton" name="btnSimulacion">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>300</y>
-        <width>381</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Simular</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
@@ -247,6 +234,19 @@
       </property>
       <property name="text">
        <string>velOperM6:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnSimulacion">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>310</y>
+        <width>89</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Simular</string>
       </property>
      </widget>
     </widget>
