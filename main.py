@@ -1,25 +1,23 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
-#import tratamiento
+import simulacion
+import Pedido
 from window import Ui_MainWindow
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QMessageBox
 from PyQt5 import uic
 from PyQt5.QtGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtCore import pyqtSlot
 
-#Clase heredada de QDialog
 class Formulario(QMainWindow):
     #Constructor de la clase
     def __init__(self):
-        #Inicio el objeto QDialog
+        #Inicio el objeto QMainwindow
         QMainWindow.__init__(self)
         self.formulario = Ui_MainWindow()
         self.formulario.setupUi(self)
-
 
         #seteamos las variables iniciales
         self.iniciarVariables()
@@ -27,22 +25,22 @@ class Formulario(QMainWindow):
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
 
-
     def iniciarVariables(self):
-        self.formulario.lineEdit_exp.setText("1")
-        self.formulario.lineEdit_dias.setText("20")
-        self.formulario.lineEdit_incrementoM4.setText("50")
-        self.formulario.lineEdit_incrementoM6.setText("30")
-        self.formulario.lineEdit_velOperM4.setText("5")
-        self.formulario.lineEdit_velOperM6.setText("10")
-
-
+        exp = self.formulario.lineEdit_exp.setText("1")
+        dias = self.formulario.lineEdit_dias.setText("20")
+        incM4 = self.formulario.lineEdit_incrementoM4.setText("50")
+        incM6 = self.formulario.lineEdit_incrementoM6.setText("30")
+        velM4 = self.formulario.lineEdit_velOperM4.setText("5")
+        velM6 = self.formulario.lineEdit_velOperM6.setText("10")
 
     def simular(self):
-        mje = "Iniciando simulación..."
+        mje = "Iniciando simulacion..."
+        try:
+            simulacion.procesar(exp, dias, incM4, incM6, velM4, velM6)
+        except:
+            #QMessageBox.critical(self, 'Error','Lo sentimos. Surgio un error inesperado \n %s', QMessageBox.Ok)
+            self.formulario.btnSimulacion.setEnabled(True)
         print(mje)
-
-
         
 def main():
     app = QApplication(sys.argv)  
