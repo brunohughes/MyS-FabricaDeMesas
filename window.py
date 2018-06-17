@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'window.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -41,24 +41,24 @@ class Ui_MainWindow(object):
         self.label_4 = QtWidgets.QLabel(self.groupBox)
         self.label_4.setGeometry(QtCore.QRect(10, 170, 141, 17))
         self.label_4.setObjectName("label_4")
-        self.lineEdit_1 = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_1.setGeometry(QtCore.QRect(290, 80, 113, 21))
-        self.lineEdit_1.setObjectName("lineEdit_1")
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_2.setGeometry(QtCore.QRect(290, 110, 113, 21))
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_3.setGeometry(QtCore.QRect(290, 140, 113, 21))
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.lineEdit_4 = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_4.setGeometry(QtCore.QRect(290, 170, 113, 21))
-        self.lineEdit_4.setObjectName("lineEdit_4")
-        self.lineEdit_5 = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_5.setGeometry(QtCore.QRect(290, 200, 113, 21))
-        self.lineEdit_5.setObjectName("lineEdit_5")
-        self.lineEdit_6 = QtWidgets.QLineEdit(self.groupBox)
-        self.lineEdit_6.setGeometry(QtCore.QRect(290, 230, 113, 21))
-        self.lineEdit_6.setObjectName("lineEdit_6")
+        self.lineEdit_exp = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEdit_exp.setGeometry(QtCore.QRect(290, 80, 113, 21))
+        self.lineEdit_exp.setObjectName("lineEdit_exp")
+        self.lineEdit_dias = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEdit_dias.setGeometry(QtCore.QRect(290, 110, 113, 21))
+        self.lineEdit_dias.setObjectName("lineEdit_dias")
+        self.lineEdit_incrementoM4 = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEdit_incrementoM4.setGeometry(QtCore.QRect(290, 140, 113, 21))
+        self.lineEdit_incrementoM4.setObjectName("lineEdit_incrementoM4")
+        self.lineEdit_incrementoM6 = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEdit_incrementoM6.setGeometry(QtCore.QRect(290, 170, 113, 21))
+        self.lineEdit_incrementoM6.setObjectName("lineEdit_incrementoM6")
+        self.lineEdit_velOperM4 = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEdit_velOperM4.setGeometry(QtCore.QRect(290, 200, 113, 21))
+        self.lineEdit_velOperM4.setObjectName("lineEdit_velOperM4")
+        self.lineEdit_velOperM6 = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEdit_velOperM6.setGeometry(QtCore.QRect(290, 230, 113, 21))
+        self.lineEdit_velOperM6.setObjectName("lineEdit_velOperM6")
         self.line_1 = QtWidgets.QFrame(self.groupBox)
         self.line_1.setGeometry(QtCore.QRect(0, 20, 411, 20))
         self.line_1.setFrameShape(QtWidgets.QFrame.HLine)
