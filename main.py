@@ -21,7 +21,7 @@ class Formulario(QMainWindow):
 
         #seteamos las variables iniciales
         self.iniciarVariables()
-
+        #self.formulario.btnSimulacion.clicked.connect(self.iniciarVariables)
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
 
@@ -32,12 +32,26 @@ class Formulario(QMainWindow):
         incM6 = self.formulario.lineEdit_incrementoM6.setText("30")
         velM4 = self.formulario.lineEdit_velOperM4.setText("5")
         velM6 = self.formulario.lineEdit_velOperM6.setText("10")
+        
+       # sim=simulacion()
+        #sim.exp=exp
+       # sim.dias=dias
+       # sim.incM4 =incM4
+       # sim.incM6=incM6
+       # sim.velM4=velM4
+       # sim.velM6=velM6
+        
+        #mje= "dentro de iniciar variables1"
+       # simulacion.procesar(self,exp,dias, incM4,incM6,velM4,velM6)
+        #mje= "dentro de iniciar variables2"
 
     def simular(self):
         mje = "Iniciando simulacion..."
         try:
+            mje="entré al try"
             simulacion.procesar(exp, dias, incM4, incM6, velM4, velM6)
         except:
+            mje="entre a except"
             #QMessageBox.critical(self, 'Error','Lo sentimos. Surgio un error inesperado \n %s', QMessageBox.Ok)
             self.formulario.btnSimulacion.setEnabled(True)
         print(mje)
@@ -46,7 +60,7 @@ def main():
     app = QApplication(sys.argv)  
     formulario = Formulario()  
     formulario.show()  
-    app.exec_()  
+    app.exec_()     
 
 if __name__ == '__main__':  
     main()
