@@ -3,20 +3,20 @@
 import sys
 #import tratamiento
 from window import Ui_MainWindow
-from PyQt5 import QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import uic
-from PyQt5.QtGui import *
+#from PyQt5 import QtGui
+#from PyQt5.QtWidgets import QApplication, QMainWindow
+#from PyQt5 import uic
+#from PyQt5.QtGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton
+#from PyQt5.QtCore import pyqtSlot
 
 #Clase heredada de QDialog
-class Formulario(QMainWindow):
+class Formulario(QtWidgets.QMainWindow):
     #Constructor de la clase
     def __init__(self):
         #Inicio el objeto QDialog
-        QMainWindow.__init__(self)
+        QtWidgets.QMainWindow.__init__(self)
         self.formulario = Ui_MainWindow()
         self.formulario.setupUi(self)
 
@@ -45,7 +45,7 @@ class Formulario(QMainWindow):
 
         
 def main():
-    app = QApplication(sys.argv)  
+    app = QtWidgets.QApplication(sys.argv)  
     formulario = Formulario()  
     formulario.show()  
     app.exec_()  
