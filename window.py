@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'window.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.tabSuavizado = QtWidgets.QWidget()
         self.tabSuavizado.setObjectName("tabSuavizado")
         self.groupBox = QtWidgets.QGroupBox(self.tabSuavizado)
-        self.groupBox.setGeometry(QtCore.QRect(20, 10, 421, 261))
+        self.groupBox.setGeometry(QtCore.QRect(20, 10, 421, 291))
         self.groupBox.setObjectName("groupBox")
         self.label_0 = QtWidgets.QLabel(self.groupBox)
         self.label_0.setGeometry(QtCore.QRect(10, 40, 231, 21))
@@ -69,8 +69,14 @@ class Ui_MainWindow(object):
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
+        self.label_7 = QtWidgets.QLabel(self.groupBox)
+        self.label_7.setGeometry(QtCore.QRect(10, 260, 201, 17))
+        self.label_7.setObjectName("label_7")
+        self.lineEdit_diasProd = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEdit_diasProd.setGeometry(QtCore.QRect(290, 260, 113, 21))
+        self.lineEdit_diasProd.setObjectName("lineEdit_diasProd")
         self.line_3 = QtWidgets.QFrame(self.tabSuavizado)
-        self.line_3.setGeometry(QtCore.QRect(30, 280, 401, 20))
+        self.line_3.setGeometry(QtCore.QRect(30, 300, 401, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
@@ -78,7 +84,7 @@ class Ui_MainWindow(object):
         self.label_6.setGeometry(QtCore.QRect(30, 240, 131, 17))
         self.label_6.setObjectName("label_6")
         self.btnSimulacion = QtWidgets.QPushButton(self.tabSuavizado)
-        self.btnSimulacion.setGeometry(QtCore.QRect(170, 310, 89, 25))
+        self.btnSimulacion.setGeometry(QtCore.QRect(190, 330, 89, 25))
         self.btnSimulacion.setObjectName("btnSimulacion")
         self.tabWidget.addTab(self.tabSuavizado, "")
         self.tabResultados = QtWidgets.QWidget()
@@ -103,6 +109,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "velOperM4:"))
         self.label_3.setText(_translate("MainWindow", "incrementoStockM4:"))
         self.label_4.setText(_translate("MainWindow", "incrementoStockM6:"))
+        self.label_7.setText(_translate("MainWindow", "Cantidad días producción:"))
         self.label_6.setText(_translate("MainWindow", "velOperM6:"))
         self.btnSimulacion.setText(_translate("MainWindow", "Simular"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSuavizado), _translate("MainWindow", "Simulación"))

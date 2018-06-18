@@ -39,7 +39,7 @@
         <x>20</x>
         <y>10</y>
         <width>421</width>
-        <height>261</height>
+        <height>291</height>
        </rect>
       </property>
       <property name="title">
@@ -209,12 +209,35 @@
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>260</y>
+         <width>201</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cantidad días producción:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_diasProd">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>260</y>
+         <width>113</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="Line" name="line_3">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>280</y>
+        <y>300</y>
         <width>401</width>
         <height>20</height>
        </rect>
@@ -239,8 +262,8 @@
      <widget class="QPushButton" name="btnSimulacion">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>310</y>
+        <x>190</x>
+        <y>330</y>
         <width>89</width>
         <height>25</height>
        </rect>
