@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'window.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -104,8 +104,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Tp Final Modelos y Simulación"))
         self.groupBox.setTitle(_translate("MainWindow", "Parámetros"))
         self.label_0.setText(_translate("MainWindow", "Ingrese los datos para simular:"))
-        self.label_1.setText(_translate("MainWindow", "Exp:"))
-        self.label_2.setText(_translate("MainWindow", "Días:"))
+        self.label_1.setText(_translate("MainWindow", "Meses:"))
+        self.label_2.setText(_translate("MainWindow", "Días x mes:"))
         self.label_5.setText(_translate("MainWindow", "velOperM4:"))
         self.label_3.setText(_translate("MainWindow", "incrementoStockM4:"))
         self.label_4.setText(_translate("MainWindow", "incrementoStockM6:"))

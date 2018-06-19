@@ -68,7 +68,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Exp:</string>
+        <string>Meses:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_2">
@@ -81,7 +81,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Días:</string>
+        <string>Días x mes:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_5">
