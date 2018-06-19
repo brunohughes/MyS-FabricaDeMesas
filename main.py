@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
-import Pedido
 import numpy as np
 import matplotlib.pyplot as plt
+from Variable import Variable
 from window import Ui_MainWindow
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QMessageBox
@@ -69,92 +69,83 @@ class Formulario(QMainWindow):
         np.random.shuffle(pedidos)    
         
 
-    def procesarPedido(self):
-    	pass
+    def procesarPedido(self,dia,item,var,pedidos):
+        tiempoEspera = 0
+        if (item == 'M4'):                
+            if (var.stockM4 > 0):
+                var.stockM4 -= 1
+                #Esperar tiempo de Operador. se resta al tiempo disponible                    
+                tiempoEspera = np.random.exponential(scale=var.velOperM4)         
+                var.mesasConstruidasM4[dia] += 1 
+                var.solicitudesAtendidas += 1
+                pedidos.remove(item);
+            else:                        
+                var.solicitudesSinAtender +=1
+
+
+        if (item == 'M6'):                
+            if (var.stockM6 > 0):
+                var.stockM6 -= 1
+                #Esperar tiempo de Operador. se resta al tiempo disponible                    
+                tiempoEspera = np.random.exponential(scale=var.velOperM6)                                
+                var.mesasConstruidasM6[dia] += 1 
+                var.solicitudesAtendidas += 1
+                pedidos.remove(item);
+            else:                        
+                var.solicitudesSinAtender +=1
+
+        var.minutosRestantes -= tiempoEspera
+        var.tiemposOperarios[dia] += tiempoEspera
         
+        
+    def obtenerParametros(self):
+        variable = Variable()
+        variable.MES = int(self.formulario.lineEdit_exp.text())
+        variable.DIAS = int(self.formulario.lineEdit_dias.text())
+        variable.incrementoStockM4 = int(self.formulario.lineEdit_incrementoM4.text())
+        variable.incrementoStockM6 = int(self.formulario.lineEdit_incrementoM6.text())
+        variable.velOperM4 = int(self.formulario.lineEdit_velOperM4.text())
+        variable.velOperM6 = int(self.formulario.lineEdit_velOperM6.text())
+        variable.cantDiasProduccion = int(self.formulario.lineEdit_diasProd.text())
+        return variable
+        
+
     def procesar(self):
-        pedidos = []
-        stockM4=0
-        stockM6=0
-        minutosRestantes=0 #Contador de minutos restantes en un dia 
-        minutosXdia = 60*8
-        mesasConstruidasM4=[]
-        mesasConstruidasM6=[]
-        tiemposOperarios=[]
-        solicitudesAtendidasXMes=[]
-        solicitudesSinAtenderXMes=[]
- 
+        pedidos = []            
+        var = self.obtenerParametros()
 
-        MES = int(self.formulario.lineEdit_exp.text())
-        DIAS = int(self.formulario.lineEdit_dias.text())
-        incrementoStockM4 = int(self.formulario.lineEdit_incrementoM4.text())
-        incrementoStockM6 = int(self.formulario.lineEdit_incrementoM6.text())
-        velOperM4 = int(self.formulario.lineEdit_velOperM4.text())
-        velOperM6 = int(self.formulario.lineEdit_velOperM6.text())
-        cantDiasProduccion = int(self.formulario.lineEdit_diasProd.text())
-    
-    
-        for mes in range(MES):            
-            solicitudesSinAtender=0
-            solicitudesAtendidas=0
+        for mes in range(var.MES):            
+            var.solicitudesSinAtender=0
+            var.solicitudesAtendidas=0
 
-            for dia in range(DIAS):                
-                minutosRestantes = minutosXdia
-                mesasConstruidasM4.append(0)
-                mesasConstruidasM6.append(0)
-                tiemposOperarios.append(0)
+            for dia in range(var.DIAS):                
+                var.minutosRestantes = var.minutosXdia
+                var.mesasConstruidasM4.append(0)
+                var.mesasConstruidasM6.append(0)
+                var.tiemposOperarios.append(0)
             
 
-                #Incremento el stock los promeros N dias
-                if (dia <= cantDiasProduccion):
-                    stockM4 +=incrementoStockM4
-                    stockM6 +=incrementoStockM6
+                #Incremento el stock los promeros N dia de cada mes
+                if (dia <= var.cantDiasProduccion):
+                    var.stockM4 += var.incrementoStockM4
+                    var.stockM6 += var.incrementoStockM6
 
                 self.generarPedidos(pedidos)
 
                 #Recorro la lista de solicitudes
                 for item in pedidos:   
-
-                    if (minutosRestantes > 0):
-                        if (item == 'M4'):                
-                            if (stockM4 > 0):
-                                stockM4 -= 1
-                                #Esperar tiempo de Operador. se resta al tiempo disponible                    
-                                tiempoEspera = np.random.exponential(scale=velOperM4)         
-                                mesasConstruidasM4[dia] += 1 
-                                solicitudesAtendidas += 1
-                                pedidos.remove(item);
-                            else:                        
-                                solicitudesSinAtender +=1
-
-
-                        if (item == 'M6'):                
-                            if (stockM6 > 0):
-                                stockM6 -= 1
-                                #Esperar tiempo de Operador. se resta al tiempo disponible                    
-                                tiempoEspera = np.random.exponential(scale=velOperM6)                                
-                                mesasConstruidasM6[dia] += 1 
-                                solicitudesAtendidas += 1
-                                pedidos.remove(item);
-                            else:                        
-                                solicitudesSinAtender +=1
-
-                        minutosRestantes -= tiempoEspera
-                        tiemposOperarios[dia] += tiempoEspera
+                    if (var.minutosRestantes > 0):
+                        self.procesarPedido(dia,item,var,pedidos)
                     else: 
-                    	#Se terminaron los minutos del dia 
-                        solicitudesSinAtender +=1
+                        var.solicitudesSinAtender +=1
 
-            solicitudesAtendidasXMes.append(solicitudesAtendidas)
-            solicitudesSinAtenderXMes.append(solicitudesSinAtender)
+            var.solicitudesAtendidasXMes.append(var.solicitudesAtendidas)
+            var.solicitudesSinAtenderXMes.append(var.solicitudesSinAtender)
 
-        print('solicitudesAtendidasXMes')
-        print(solicitudesAtendidasXMes)
-        print('solicitudesSinAtenderXMes')
-        print(solicitudesSinAtenderXMes)
 
-        promedioSolicitudesAtendidas = int(np.mean(solicitudesAtendidasXMes))
-        promedioSolicitudesSinAtender = int(np.mean(solicitudesSinAtenderXMes))
+        promedioSolicitudesAtendidas = int(np.mean(var.solicitudesAtendidasXMes))
+        promedioSolicitudesSinAtender = int(np.mean(var.solicitudesSinAtenderXMes))
+        
         return promedioSolicitudesAtendidas, promedioSolicitudesSinAtender                
         
 
