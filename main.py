@@ -49,7 +49,7 @@ class Formulario(QMainWindow):
         return abs(porc_1 - porc_2)    
 
     def simular(self):
-
+        print('---------------------------------------------------------------')
         directorio_grafico = "imagenes/grafico.png"
         prom_solicitudesAtendidas, prom_solicitudesSinAtender = self.procesar()
         
@@ -60,8 +60,7 @@ class Formulario(QMainWindow):
         listaPromAtendidas.append(prom_solicitudesAtendidas)
         
         print('Promedio Solicitudes atendidas: {} ({:.2f}%) '.format(str(prom_solicitudesAtendidas), porc_atendidas))
-        print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(prom_solicitudesSinAtender), porc_sin_atender ))
-        print('---------------------------------------------------------------')
+        print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(prom_solicitudesSinAtender), porc_sin_atender ))        
         print('Ejecuciones de Solicitudes Atendidas: ',listaPromAtendidas)
 
         ##Prueba calculo porcentaje de mejora entre: prom_SolicitudesAtendidas para 50 y 30, y prom_solicitudesAtendidads para 60 y 40 
@@ -108,7 +107,7 @@ class Formulario(QMainWindow):
         #Desordeno lista para no atender siempre las M4 primero
         np.random.shuffle(pedidos)    
  
-    def procesarPedido(self,dia,item,var,pedidos):
+    def procesarPedido(self,dia,item,var,noAtendidos):
         tiempoEspera = 0
         if (item == 'M4'):                
             if (var.stockM4 > 0):
@@ -117,9 +116,8 @@ class Formulario(QMainWindow):
                 tiempoEspera = np.random.exponential(scale=var.velOperM4)         
                 var.mesasConstruidasM4[dia] += 1 
                 var.solicitudesAtendidas += 1
-                pedidos.remove(item);
-            else:                        
-                var.solicitudesSinAtender +=1
+            else:
+                noAtendidos.append(item)    
 
         if (item == 'M6'):                
             if (var.stockM6 > 0):
@@ -128,12 +126,11 @@ class Formulario(QMainWindow):
                 tiempoEspera = np.random.exponential(scale=var.velOperM6)                                
                 var.mesasConstruidasM6[dia] += 1 
                 var.solicitudesAtendidas += 1
-                pedidos.remove(item);
-            else:                        
-                var.solicitudesSinAtender +=1
+            else:
+                noAtendidos.append(item)  
 
         var.minutosRestantes -= tiempoEspera
-        var.tiemposOperarios[dia] += tiempoEspera
+
     
     def obtenerParametros(self):
         variable = Variable()
@@ -145,24 +142,25 @@ class Formulario(QMainWindow):
         variable.velOperM6 = int(self.formulario.lineEdit_velOperM6.text())
         variable.cantDiasProduccion = int(self.formulario.lineEdit_diasProd.text())
         return variable
+
         
     def procesar(self):
-        pedidos = []            
-        var = self.obtenerParametros()
+        pedidos = []                    
+        noAtendidos = []                
+
+        var = self.obtenerParametros()  
 
         for mes in range(var.MES):            
-            var.solicitudesSinAtender=0
-            var.solicitudesAtendidas=0
+            var.solicitudesAtendidas=0            
 
-            for dia in range(var.DIAS):                
+            for dia in range(var.DIAS):
+                noAtendidos = []                
                 var.minutosRestantes = var.minutosXdia
                 var.mesasConstruidasM4.append(0)
                 var.mesasConstruidasM6.append(0)
-                var.tiemposOperarios.append(0)
-            
 
                 #Incremento el stock los promeros N dia de cada mes
-                if (dia <= var.cantDiasProduccion):
+                if (dia < var.cantDiasProduccion):
                     var.stockM4 += var.incrementoStockM4
                     var.stockM6 += var.incrementoStockM6
 
@@ -171,13 +169,20 @@ class Formulario(QMainWindow):
                 #Recorro la lista de solicitudes
                 for item in pedidos:   
                     if (var.minutosRestantes > 0):
-                        self.procesarPedido(dia,item,var,pedidos)
-                    else: 
-                        var.solicitudesSinAtender +=1
+                        self.procesarPedido(dia,item,var,noAtendidos)
+                    else:
+                        noAtendidos.append(item)    
 
-
+                pedidos = noAtendidos
+                
+            var.solicitudesSinAtender= len(pedidos)
             var.solicitudesAtendidasXMes.append(var.solicitudesAtendidas)
             var.solicitudesSinAtenderXMes.append(var.solicitudesSinAtender)
+
+        print('Solicitudes atendidas por Mes:')
+        print(var.solicitudesAtendidasXMes)    
+        print('Solicitudes NO atendidas por Mes:')
+        print(var.solicitudesSinAtenderXMes)    
 
         promedioSolicitudesAtendidas = int(np.mean(var.solicitudesAtendidasXMes))
         promedioSolicitudesSinAtender = int(np.mean(var.solicitudesSinAtenderXMes))
