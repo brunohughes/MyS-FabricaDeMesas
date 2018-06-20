@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>477</width>
+    <width>530</width>
     <height>428</height>
    </rect>
   </property>
@@ -22,8 +22,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>461</width>
-      <height>401</height>
+      <width>571</width>
+      <height>421</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -38,7 +38,7 @@
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>421</width>
+        <width>481</width>
         <height>291</height>
        </rect>
       </property>
@@ -126,7 +126,7 @@
       <widget class="QLineEdit" name="lineEdit_exp">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>350</x>
          <y>80</y>
          <width>113</width>
          <height>21</height>
@@ -136,7 +136,7 @@
       <widget class="QLineEdit" name="lineEdit_dias">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>350</x>
          <y>110</y>
          <width>113</width>
          <height>21</height>
@@ -146,7 +146,7 @@
       <widget class="QLineEdit" name="lineEdit_incrementoM4">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>350</x>
          <y>140</y>
          <width>113</width>
          <height>21</height>
@@ -156,7 +156,7 @@
       <widget class="QLineEdit" name="lineEdit_incrementoM6">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>350</x>
          <y>170</y>
          <width>113</width>
          <height>21</height>
@@ -166,7 +166,7 @@
       <widget class="QLineEdit" name="lineEdit_velOperM4">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>350</x>
          <y>200</y>
          <width>113</width>
          <height>21</height>
@@ -176,7 +176,7 @@
       <widget class="QLineEdit" name="lineEdit_velOperM6">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>350</x>
          <y>230</y>
          <width>113</width>
          <height>21</height>
@@ -188,7 +188,7 @@
         <rect>
          <x>0</x>
          <y>20</y>
-         <width>411</width>
+         <width>481</width>
          <height>20</height>
         </rect>
        </property>
@@ -201,7 +201,7 @@
         <rect>
          <x>0</x>
          <y>60</y>
-         <width>411</width>
+         <width>481</width>
          <height>20</height>
         </rect>
        </property>
@@ -225,7 +225,7 @@
       <widget class="QLineEdit" name="lineEdit_diasProd">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>350</x>
          <y>260</y>
          <width>113</width>
          <height>21</height>
@@ -238,7 +238,7 @@
        <rect>
         <x>30</x>
         <y>300</y>
-        <width>401</width>
+        <width>471</width>
         <height>20</height>
        </rect>
       </property>
@@ -262,7 +262,7 @@
      <widget class="QPushButton" name="btnSimulacion">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>220</x>
         <y>330</y>
         <width>89</width>
         <height>25</height>
@@ -277,6 +277,96 @@
      <attribute name="title">
       <string>Resultados</string>
      </attribute>
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>231</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Gráfico 1ra. Corrida</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+      <widget class="QLabel" name="primerGrafico">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>211</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>20</y>
+        <width>241</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Gráfico 2da. Corrida</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <widget class="QLabel" name="segundoGrafico">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>211</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>320</y>
+        <width>201</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Resultado de la simulación:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_resultado">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>320</y>
+        <width>231</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

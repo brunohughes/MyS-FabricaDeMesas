@@ -90,7 +90,10 @@ class Formulario(QMainWindow):
         plt.legend(labels, loc="best")
         plt.axis('equal')
         plt.tight_layout()
-        plt.show()
+        plt.savefig('imagenes/grafico.png')
+        self.formulario.primerGrafico.setScaledContents(True)
+        self.formulario.primerGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico.png'))
+        #plt.show()
 
     def generarPedidos(self,pedidos):
         cantPedidosM4 = np.random.poisson(20)
