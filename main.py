@@ -13,7 +13,10 @@ from PyQt5.QtGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import pyqtSlot
 
+    
 class Formulario(QMainWindow):
+
+
     #Constructor de la clase
     def __init__(self):
         #Inicio el objeto QMainwindow
@@ -46,17 +49,36 @@ class Formulario(QMainWindow):
         return abs(porc_1 - porc_2)    
 
     def simular(self):
+
         directorio_grafico = "imagenes/grafico.png"
         prom_solicitudesAtendidas, prom_solicitudesSinAtender = self.procesar()
-
+        
         porc_atendidas, porc_sin_atender = self.calcular_porcentajes(prom_solicitudesAtendidas, prom_solicitudesSinAtender)        
         
         self.armar_grafico(directorio_grafico, porc_atendidas,porc_sin_atender)
-
+        
+        listaPromAtendidas.append(prom_solicitudesAtendidas)
+        
         print('Promedio Solicitudes atendidas: {} ({:.2f}%) '.format(str(prom_solicitudesAtendidas), porc_atendidas))
         print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(prom_solicitudesSinAtender), porc_sin_atender ))
         print('---------------------------------------------------------------')
-    
+        print('Ejecuciones de Solicitudes Atendidas: ',listaPromAtendidas)
+
+        ##Prueba calculo porcentaje de mejora entre: prom_SolicitudesAtendidas para 50 y 30, y prom_solicitudesAtendidads para 60 y 40 
+        #for item in listaPromAtendidas:
+        if len(listaPromAtendidas)>=2:
+            #para 50 y 30 
+            var=listaPromAtendidas[0]
+            diferencia = float(listaPromAtendidas[1]-listaPromAtendidas[0])
+            print ('diferencia:',diferencia)
+            print ('var',var)
+            dif2= float(diferencia/var)
+            print ('dif2:',dif2)
+            porcentaje = float(dif2*100)
+            #porcentaje = float(100 * (diferencia/var))
+            print ('porcentaje de mejora entre ambas ejecuciones:',porcentaje)
+                
+        
     def armar_grafico(self,directorio_grafico, porc_atendidas, porc_sin_atender):
         labels = ['Prom. Solicitudes atendidas', 'Prom. Solicitudes NO atendidas']
         porc_atendidasI=int(porc_atendidas)
@@ -150,6 +172,7 @@ class Formulario(QMainWindow):
                     else: 
                         var.solicitudesSinAtender +=1
 
+
             var.solicitudesAtendidasXMes.append(var.solicitudesAtendidas)
             var.solicitudesSinAtenderXMes.append(var.solicitudesSinAtender)
 
@@ -157,12 +180,18 @@ class Formulario(QMainWindow):
         promedioSolicitudesSinAtender = int(np.mean(var.solicitudesSinAtenderXMes))
         
         return promedioSolicitudesAtendidas, promedioSolicitudesSinAtender                
+
+
         
 def main():
+    #
+    global listaPromAtendidas
+    listaPromAtendidas = []
+    
     app = QApplication(sys.argv)  
     formulario = Formulario()  
     formulario.show()  
     app.exec_()     
 
 if __name__ == '__main__':  
-    main()
+    main()  
