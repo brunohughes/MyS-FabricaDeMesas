@@ -50,7 +50,7 @@ class Formulario(QMainWindow):
         prom_solicitudesAtendidas, prom_solicitudesSinAtender = self.procesar()
 
         porc_atendidas, porc_sin_atender = self.calcular_porcentajes(prom_solicitudesAtendidas, prom_solicitudesSinAtender)        
-  
+        
         self.armar_grafico(directorio_grafico, porc_atendidas,porc_sin_atender)
 
         print('Promedio Solicitudes atendidas: {} ({:.2f}%) '.format(str(prom_solicitudesAtendidas), porc_atendidas))
@@ -58,17 +58,17 @@ class Formulario(QMainWindow):
         print('---------------------------------------------------------------')
     
     def armar_grafico(self,directorio_grafico, porc_atendidas, porc_sin_atender):
-        labels = 'Prom. Solicitudes atendidas', 'Prom. Solicitudes NO atendidas'
-        sizes = [porc_atendidas, porc_sin_atender]
+        labels = ['Prom. Solicitudes atendidas', 'Prom. Solicitudes NO atendidas']
+        porc_atendidasI=int(porc_atendidas)
+        porc_sin_atenderI = int(porc_sin_atender)
+        sizes = [porc_atendidasI, porc_sin_atenderI]
         colors = ['yellowgreen', 'lightcoral']
         explode = (0.1, 0)
-        patches, texts = plt.pie(sizes, explode=explode, labels=labels, colors=colors, shadow=True, startangle=90)
-        plt.legend(patches, labels, loc="best")
+        plt.pie(sizes, explode=explode, colors=colors, autopct='%.2f%%', shadow=True, startangle=90)
+        plt.legend(labels, loc="best")
         plt.axis('equal')
         plt.tight_layout()
         plt.show()
-
-        #return scipy.misc.imsave(directorio_imagen_final, self.imagen)
 
     def generarPedidos(self,pedidos):
         cantPedidosM4 = np.random.poisson(20)
