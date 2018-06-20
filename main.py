@@ -79,19 +79,26 @@ class Formulario(QMainWindow):
                 
         
     def armar_grafico(self,directorio_grafico, porc_atendidas, porc_sin_atender):
+        global i
+        i+=1
         labels = ['Prom. Solicitudes atendidas', 'Prom. Solicitudes NO atendidas']
         porc_atendidasI=int(porc_atendidas)
         porc_sin_atenderI = int(porc_sin_atender)
         sizes = [porc_atendidasI, porc_sin_atenderI]
+        print sizes
         colors = ['yellowgreen', 'lightcoral']
         explode = (0.1, 0)
         plt.pie(sizes, explode=explode, colors=colors, autopct='%.2f%%', shadow=True, startangle=90)
         plt.legend(labels, loc="best")
         plt.axis('equal')
         plt.tight_layout()
-        plt.savefig('imagenes/grafico.png')
+        plt.savefig('imagenes/grafico{0}.png'.format(i))
         self.formulario.primerGrafico.setScaledContents(True)
-        self.formulario.primerGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico.png'))
+        self.formulario.primerGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico1.png'))#tengo que terminar de verlo
+        self.formulario.segundoGrafico.setScaledContents(True)
+        self.formulario.segundoGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico2.png'))#tengo que terminar de verlo
+        #self.formulario.segundoGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico{0}.png'.format(l)))
+        
         #plt.show()
 
     def generarPedidos(self,pedidos):
@@ -192,9 +199,11 @@ class Formulario(QMainWindow):
 
         
 def main():
-    #
-    global listaPromAtendidas
+    
+    global listaPromAtendidas, i, j
     listaPromAtendidas = []
+    i=0
+    j=0
     
     app = QApplication(sys.argv)  
     formulario = Formulario()  
