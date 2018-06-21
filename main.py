@@ -66,8 +66,8 @@ class Formulario(QMainWindow):
         #Calculo porcentaje de mejora entre las dos ultimas ejecuciones
         cantEjecuciones = len(listaPromAtendidas)
         if cantEjecuciones > 1:
-            item1 = listaPromAtendidas[len(listaPromAtendidas) - 2]
-            item2 = listaPromAtendidas[len(listaPromAtendidas) - 1]
+            item1 = listaPromAtendidas[cantEjecuciones - 2]
+            item2 = listaPromAtendidas[cantEjecuciones - 1]
             
             diferencia = float(item2 - item1)
             dif2= float(diferencia/item1)
