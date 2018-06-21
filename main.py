@@ -61,21 +61,19 @@ class Formulario(QMainWindow):
         
         print('Promedio Solicitudes atendidas: {} ({:.2f}%) '.format(str(prom_solicitudesAtendidas), porc_atendidas))
         print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(prom_solicitudesSinAtender), porc_sin_atender ))        
-        print('Ejecuciones de Solicitudes Atendidas: ',listaPromAtendidas)
+        #print('Ejecuciones de Solicitudes Atendidas: ',listaPromAtendidas)
 
-        ##Prueba calculo porcentaje de mejora entre: prom_SolicitudesAtendidas para 50 y 30, y prom_solicitudesAtendidads para 60 y 40 
-        #for item in listaPromAtendidas:
-        if len(listaPromAtendidas)>=2:
-            #para 50 y 30 
-            var=listaPromAtendidas[0]
-            diferencia = float(listaPromAtendidas[1]-listaPromAtendidas[0])
-            print ('diferencia:',diferencia)
-            print ('var',var)
-            dif2= float(diferencia/var)
-            print ('dif2:',dif2)
+        #Calculo porcentaje de mejora entre las dos ultimas ejecuciones
+        cantEjecuciones = len(listaPromAtendidas)
+        if cantEjecuciones > 1:
+            item1 = listaPromAtendidas[len(listaPromAtendidas) - 2]
+            item2 = listaPromAtendidas[len(listaPromAtendidas) - 1]
+            
+            diferencia = float(item2 - item1)
+            dif2= float(diferencia/item1)
             porcentaje = float(dif2*100)
             #porcentaje = float(100 * (diferencia/var))
-            print ('porcentaje de mejora entre ambas ejecuciones:',porcentaje)
+            print ('Porcentaje de mejora: {:.2f}%'.format(porcentaje))
                 
         
     def armar_grafico(self,directorio_grafico, porc_atendidas, porc_sin_atender):
@@ -85,7 +83,7 @@ class Formulario(QMainWindow):
         porc_atendidasI=int(porc_atendidas)
         porc_sin_atenderI = int(porc_sin_atender)
         sizes = [porc_atendidasI, porc_sin_atenderI]
-        print sizes
+        #print sizes
         colors = ['yellowgreen', 'lightcoral']
         explode = (0.1, 0)
         plt.pie(sizes, explode=explode, colors=colors, autopct='%.2f%%', shadow=True, startangle=90)
