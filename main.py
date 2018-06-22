@@ -3,16 +3,12 @@
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy.misc
 from Variable import Variable
 from window import Ui_MainWindow
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QMessageBox
-from PyQt5 import uic
 from PyQt5.QtGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import pyqtSlot
-
     
 class Formulario(QMainWindow):
 
