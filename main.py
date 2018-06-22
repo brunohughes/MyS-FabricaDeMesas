@@ -25,19 +25,18 @@ class Formulario(QMainWindow):
         self.formulario.setupUi(self)
 
         #seteamos las variables iniciales
-        #self.iniciarVariables()
-        #self.formulario.btnSimulacion.clicked.connect(self.iniciarVariables)
+        self.iniciarVariables()
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
 
-    #def iniciarVariables(self):
-    #    self.formulario.lineEdit_exp.setText("1")
-    #    self.formulario.lineEdit_dias.setText("20")
-    #    self.formulario.lineEdit_incrementoM4.setText("50")
-    #    self.formulario.lineEdit_incrementoM6.setText("30")
-    #    self.formulario.lineEdit_velOperM4.setText("15")
-    #    self.formulario.lineEdit_velOperM6.setText("20")
-    #    self.formulario.lineEdit_diasProd.setText("10")
+    def iniciarVariables(self):
+        self.formulario.lineEdit_exp.setValue(1)
+        self.formulario.lineEdit_dias.setValue(20)
+        self.formulario.lineEdit_incrementoM4.setValue(50)
+        self.formulario.lineEdit_incrementoM6.setValue(30)
+        self.formulario.lineEdit_velOperM4.setValue(15)
+        self.formulario.lineEdit_velOperM6.setValue(20)
+        self.formulario.lineEdit_diasProd.setValue(10)
 
     def calcular_porcentajes(self, solicitudesAtendidas, solicitudesSinAtender):
         total = solicitudesAtendidas + solicitudesSinAtender
@@ -92,12 +91,6 @@ class Formulario(QMainWindow):
         plt.tight_layout()
         plt.savefig('imagenes/grafico{0}.png'.format(i))
         plt.show()
-        #self.formulario.primerGrafico.setScaledContents(True)
-        #self.formulario.primerGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico1.png'))#tengo que terminar de verlo
-        #self.formulario.segundoGrafico.setScaledContents(True)
-        #self.formulario.segundoGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico2.png'))#tengo que terminar de verlo
-        #self.formulario.segundoGrafico.setPixmap(QtGui.QPixmap('imagenes/grafico{0}.png'.format(l)))
-          
 
     def generarPedidos(self,pedidos):
         cantPedidosM4 = np.random.poisson(20)
