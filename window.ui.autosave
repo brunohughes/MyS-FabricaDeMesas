@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>577</width>
+    <height>470</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Tp Final Modelos y Simulación</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <widget class="QToolBox" name="toolBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>571</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="toolBoxPage1">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>571</width>
+       <height>359</height>
+      </rect>
+     </property>
+     <attribute name="label">
+      <string/>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>0</y>
+        <width>541</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Parámetros de simulación</string>
+      </property>
+      <widget class="QLabel" name="label_0">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>279</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ingrese los siguientes datos para simular:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_1">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>251</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cantidad de meses a simular:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>191</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Días x mes:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>230</y>
+         <width>311</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Vel. atención operario M4 (minutos):</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>331</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Incremento de stock M4 (cantidad de partes):</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>200</y>
+         <width>311</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Incremento de stock M6 (cantidad de partes):</string>
+       </property>
+      </widget>
+      <widget class="Line" name="line_1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>531</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="Line" name="line_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>60</y>
+         <width>531</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>260</y>
+         <width>311</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Vel. atención operario M6 (minutos):</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>140</y>
+         <width>301</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cantidad de días de producción por mes:</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditExp">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>80</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditDias">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>110</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditIncrementoM4">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>170</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditIncrementoM6">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>200</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditVelOperM4">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>230</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditVelOperM6">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>260</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditDiasProd">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>140</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSimulacion">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>320</y>
+         <width>301</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Simular</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditMejora">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>320</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>326</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;MEJORA:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Line" name="line_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>300</y>
+        <width>521</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="toolBoxPage2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>571</width>
+       <height>359</height>
+      </rect>
+     </property>
+     <attribute name="label">
+      <string/>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
