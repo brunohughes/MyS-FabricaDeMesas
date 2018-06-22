@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>530</width>
-    <height>428</height>
+    <width>577</width>
+    <height>445</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QToolBox" name="toolBox">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -26,36 +26,41 @@
       <height>421</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tabSuavizado">
-     <attribute name="title">
-      <string>Simulación</string>
+    <widget class="QWidget" name="toolBoxPage1">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>571</width>
+       <height>359</height>
+      </rect>
+     </property>
+     <attribute name="label">
+      <string/>
      </attribute>
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>10</y>
-        <width>481</width>
-        <height>291</height>
+        <y>0</y>
+        <width>541</width>
+        <height>371</height>
        </rect>
       </property>
       <property name="title">
-       <string>Parámetros</string>
+       <string>Parámetros de simulación</string>
       </property>
       <widget class="QLabel" name="label_0">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>40</y>
-         <width>231</width>
-         <height>21</height>
+         <width>279</width>
+         <height>17</height>
         </rect>
        </property>
        <property name="text">
-        <string>Ingrese los datos para simular:</string>
+        <string>Ingrese los siguientes datos para simular:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_1">
@@ -63,12 +68,12 @@
         <rect>
          <x>10</x>
          <y>80</y>
-         <width>66</width>
+         <width>251</width>
          <height>17</height>
         </rect>
        </property>
        <property name="text">
-        <string>Meses:</string>
+        <string>Cantidad de meses a simular:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_2">
@@ -76,7 +81,7 @@
         <rect>
          <x>10</x>
          <y>110</y>
-         <width>66</width>
+         <width>191</width>
          <height>17</height>
         </rect>
        </property>
@@ -89,12 +94,12 @@
         <rect>
          <x>10</x>
          <y>200</y>
-         <width>131</width>
+         <width>311</width>
          <height>17</height>
         </rect>
        </property>
        <property name="text">
-        <string>velOperM4:</string>
+        <string>Vel. atención operario M4 (minutos):</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_3">
@@ -102,12 +107,12 @@
         <rect>
          <x>10</x>
          <y>140</y>
-         <width>151</width>
+         <width>331</width>
          <height>17</height>
         </rect>
        </property>
        <property name="text">
-        <string>incrementoStockM4:</string>
+        <string>incremento de stock M4 (cantidad de partes):</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_4">
@@ -115,72 +120,12 @@
         <rect>
          <x>10</x>
          <y>170</y>
-         <width>141</width>
+         <width>311</width>
          <height>17</height>
         </rect>
        </property>
        <property name="text">
-        <string>incrementoStockM6:</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_exp">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>80</y>
-         <width>113</width>
-         <height>21</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_dias">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>110</y>
-         <width>113</width>
-         <height>21</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_incrementoM4">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>140</y>
-         <width>113</width>
-         <height>21</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_incrementoM6">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>170</y>
-         <width>113</width>
-         <height>21</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_velOperM4">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>200</y>
-         <width>113</width>
-         <height>21</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_velOperM6">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>230</y>
-         <width>113</width>
-         <height>21</height>
-        </rect>
+        <string>incremento de stock M4 (cantidad de partes):</string>
        </property>
       </widget>
       <widget class="Line" name="line_1">
@@ -188,7 +133,7 @@
         <rect>
          <x>0</x>
          <y>20</y>
-         <width>481</width>
+         <width>531</width>
          <height>20</height>
         </rect>
        </property>
@@ -201,7 +146,7 @@
         <rect>
          <x>0</x>
          <y>60</y>
-         <width>481</width>
+         <width>531</width>
          <height>20</height>
         </rect>
        </property>
@@ -209,12 +154,25 @@
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>230</y>
+         <width>311</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Vel. atención operario M6 (minutos):</string>
+       </property>
+      </widget>
       <widget class="QLabel" name="label_7">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>260</y>
-         <width>201</width>
+         <width>301</width>
          <height>17</height>
         </rect>
        </property>
@@ -222,14 +180,87 @@
         <string>Cantidad días producción:</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_diasProd">
+      <widget class="QSpinBox" name="lineEdit_exp">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>260</y>
-         <width>113</width>
-         <height>21</height>
+         <x>410</x>
+         <y>80</y>
+         <width>111</width>
+         <height>26</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEdit_dias">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>110</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEdit_incrementoM4">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>140</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEdit_incrementoM6">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>170</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEdit_velOperM4">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>200</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEdit_velOperM6">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>230</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEdit_diasProd">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>260</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSimulacion">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>320</y>
+         <width>89</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Simular</string>
        </property>
       </widget>
      </widget>
@@ -238,7 +269,7 @@
        <rect>
         <x>30</x>
         <y>300</y>
-        <width>471</width>
+        <width>521</width>
         <height>20</height>
        </rect>
       </property>
@@ -246,127 +277,19 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>240</y>
-        <width>131</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>velOperM6:</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnSimulacion">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>330</y>
-        <width>89</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Simular</string>
-      </property>
-     </widget>
     </widget>
-    <widget class="QWidget" name="tabResultados">
-     <attribute name="title">
-      <string>Resultados</string>
+    <widget class="QWidget" name="toolBoxPage2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>571</width>
+       <height>359</height>
+      </rect>
+     </property>
+     <attribute name="label">
+      <string/>
      </attribute>
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>231</width>
-        <height>281</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Gráfico 1ra. Corrida</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-      <widget class="QLabel" name="primerGrafico">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>30</y>
-         <width>211</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_4">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>20</y>
-        <width>241</width>
-        <height>281</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Gráfico 2da. Corrida</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <widget class="QLabel" name="segundoGrafico">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>30</y>
-         <width>211</width>
-         <height>261</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="scaledContents">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QLabel" name="label_8">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>320</y>
-        <width>201</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Resultado de la simulación:</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_resultado">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>320</y>
-        <width>231</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
     </widget>
    </widget>
   </widget>
