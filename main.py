@@ -34,67 +34,59 @@ class Formulario(QMainWindow):
         self.formulario.lineEdit_dias.setValue(20)
         self.formulario.lineEdit_incrementoM4.setValue(50)
         self.formulario.lineEdit_incrementoM6.setValue(30)
-        self.formulario.lineEdit_velOperM4.setValue(15)
-        self.formulario.lineEdit_velOperM6.setValue(20)
+        self.formulario.lineEdit_velOperM4.setValue(5)
+        self.formulario.lineEdit_velOperM6.setValue(10)
         self.formulario.lineEdit_diasProd.setValue(10)
 
-    def calcular_porcentajes(self, solicitudesAtendidas, solicitudesSinAtender):
+    def calcularPorcentajes(self, solicitudesAtendidas, solicitudesSinAtender):
         total = solicitudesAtendidas + solicitudesSinAtender
-        porc_atendidas = ( solicitudesAtendidas * 100 ) / total
-        porc_sin_atender = ( solicitudesSinAtender * 100) / total
-        return porc_atendidas, porc_sin_atender
+        porcAtendidas = ( solicitudesAtendidas * 100 ) / total
+        porcSinAtender = ( solicitudesSinAtender * 100) / total
+        return porcAtendidas, porcSinAtender
 
-    def calcular_mejora(porc_1, porc_2):
-        return abs(porc_1 - porc_2)    
+    def calcularMejora(self,porc1, porc2):
+        return abs(porc1 - porc2)    
 
     def simular(self):
         print('---------------------------------------------------------------')
-        directorio_grafico = "imagenes/grafico.png"
-        prom_solicitudesAtendidas, prom_solicitudesSinAtender = self.procesar()
-        
-        porc_atendidas, porc_sin_atender = self.calcular_porcentajes(prom_solicitudesAtendidas, prom_solicitudesSinAtender)        
-        
-        self.armar_grafico(directorio_grafico, porc_atendidas,porc_sin_atender)
-        
-        listaPromAtendidas.append(prom_solicitudesAtendidas)
-        
-        print('Promedio Solicitudes atendidas: {} ({:.2f}%) '.format(str(prom_solicitudesAtendidas), porc_atendidas))
-        print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(prom_solicitudesSinAtender), porc_sin_atender ))        
-        #print('Ejecuciones de Solicitudes Atendidas: ',listaPromAtendidas)
+        promSolicitudesAtendidas, promSolicitudesSinAtender = self.procesar()        
+        porcAtendidas, porcSinAtender = self.calcularPorcentajes(promSolicitudesAtendidas, promSolicitudesSinAtender)        
+        listaPorcAtendidas.append(porcAtendidas)                      
+        cantEjecuciones = len(listaPorcAtendidas)
+        print('Promedio Solicitudes atendidas: {} ({:.2f}%) '.format(str(promSolicitudesAtendidas), porcAtendidas))
+        print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(promSolicitudesSinAtender), porcSinAtender ))        
 
-        #Calculo porcentaje de mejora entre las dos ultimas ejecuciones
-        cantEjecuciones = len(listaPromAtendidas)
         if cantEjecuciones > 1:
-            item1 = listaPromAtendidas[cantEjecuciones - 2]
-            item2 = listaPromAtendidas[cantEjecuciones - 1]
-            
-            diferencia = float(item2 - item1)
-            dif2= float(diferencia/item1)
-            porcentaje = float(dif2*100)
-            #porcentaje = float(100 * (diferencia/var))
-            print ('Porcentaje de mejora: {:.2f}%'.format(porcentaje))
+           print('Ejecuciones:' + str(cantEjecuciones))
+           mejora=self.calcularMejora(listaPorcAtendidas[cantEjecuciones -2], listaPorcAtendidas[cantEjecuciones -1])
+           print('Mejora: {:.2f}%'.format(mejora))        
+           self.formulario.lineEditMejora.setText('{:.2f}%'.format(mejora))
+
+        self.armarGrafico(cantEjecuciones,porcAtendidas,porcSinAtender)
+	
                 
         
-    def armar_grafico(self,directorio_grafico, porc_atendidas, porc_sin_atender):
-        global i
-        i+=1
+    def armarGrafico(self,nroEjecucion, porcAtendidas, porcSinAtender):
+
         labels = ['Prom. Solicitudes atendidas', 'Prom. Solicitudes NO atendidas']
-        porc_atendidasI=int(porc_atendidas)
-        porc_sin_atenderI = int(porc_sin_atender)
-        sizes = [porc_atendidasI, porc_sin_atenderI]
-        #print sizes
+        porcAtendidasI=int(porcAtendidas)
+        porcSinAtenderI = int(porcSinAtender)
+        sizes = [porcAtendidasI, porcSinAtenderI]        
         colors = ['yellowgreen', 'lightcoral']
         explode = (0.1, 0)
+        
         plt.pie(sizes, explode=explode, colors=colors, autopct='%.2f%%', shadow=True, startangle=90)
         plt.legend(labels, loc="best")
         plt.axis('equal')
         plt.tight_layout()
-        plt.savefig('imagenes/grafico{0}.png'.format(i))
+        plt.savefig('imagenes/grafico{0}.png'.format(nroEjecucion))        
+        plt.gcf().canvas.set_window_title('Ejecucion nro {0}'.format(nroEjecucion))        
         plt.show()
 
+
     def generarPedidos(self,pedidos):
-        cantPedidosM4 = np.random.poisson(20)
-        cantPedidosM6 = np.random.poisson(10)
+        cantPedidosM4 = np.random.poisson(30)
+        cantPedidosM6 = np.random.poisson(25)
 
         #Armo una lista con elemntos M4 y M6
         for _ in range(cantPedidosM4):
@@ -177,11 +169,6 @@ class Formulario(QMainWindow):
             var.solicitudesAtendidasXMes.append(var.solicitudesAtendidas)
             var.solicitudesSinAtenderXMes.append(var.solicitudesSinAtender)
 
-        print('Solicitudes atendidas por Mes:')
-        print(var.solicitudesAtendidasXMes)    
-        print('Solicitudes NO atendidas por Mes:')
-        print(var.solicitudesSinAtenderXMes)    
-
         promedioSolicitudesAtendidas = int(np.mean(var.solicitudesAtendidasXMes))
         promedioSolicitudesSinAtender = int(np.mean(var.solicitudesSinAtenderXMes))
         
@@ -191,10 +178,8 @@ class Formulario(QMainWindow):
         
 def main():
     
-    global listaPromAtendidas, i, j
-    listaPromAtendidas = []
-    i=0
-    j=0
+    global listaPorcAtendidas
+    listaPorcAtendidas = []
     
     app = QApplication(sys.argv)  
     formulario = Formulario()  

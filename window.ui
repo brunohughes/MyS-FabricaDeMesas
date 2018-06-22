@@ -32,7 +32,7 @@
        <x>0</x>
        <y>0</y>
        <width>571</width>
-       <height>359</height>
+       <height>367</height>
       </rect>
      </property>
      <attribute name="label">
@@ -253,14 +253,60 @@
       <widget class="QPushButton" name="btnSimulacion">
        <property name="geometry">
         <rect>
-         <x>230</x>
+         <x>168</x>
          <y>320</y>
-         <width>89</width>
-         <height>25</height>
+         <width>151</width>
+         <height>41</height>
         </rect>
        </property>
        <property name="text">
         <string>Simular</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditMejora">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>330</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>310</y>
+         <width>71</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>MEJORA:</string>
        </property>
       </widget>
      </widget>
@@ -284,7 +330,7 @@
        <x>0</x>
        <y>0</y>
        <width>571</width>
-       <height>359</height>
+       <height>367</height>
       </rect>
      </property>
      <attribute name="label">

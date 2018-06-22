@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'window.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         self.toolBox.setGeometry(QtCore.QRect(0, 0, 571, 421))
         self.toolBox.setObjectName("toolBox")
         self.toolBoxPage1 = QtWidgets.QWidget()
-        self.toolBoxPage1.setGeometry(QtCore.QRect(0, 0, 571, 359))
+        self.toolBoxPage1.setGeometry(QtCore.QRect(0, 0, 571, 367))
         self.toolBoxPage1.setObjectName("toolBoxPage1")
         self.groupBox = QtWidgets.QGroupBox(self.toolBoxPage1)
         self.groupBox.setGeometry(QtCore.QRect(20, 0, 541, 371))
@@ -80,8 +80,27 @@ class Ui_MainWindow(object):
         self.lineEdit_diasProd.setGeometry(QtCore.QRect(410, 260, 111, 26))
         self.lineEdit_diasProd.setObjectName("lineEdit_diasProd")
         self.btnSimulacion = QtWidgets.QPushButton(self.groupBox)
-        self.btnSimulacion.setGeometry(QtCore.QRect(230, 320, 89, 25))
+        self.btnSimulacion.setGeometry(QtCore.QRect(168, 320, 151, 41))
         self.btnSimulacion.setObjectName("btnSimulacion")
+        self.lineEditMejora = QtWidgets.QLineEdit(self.groupBox)
+        self.lineEditMejora.setEnabled(True)
+        self.lineEditMejora.setGeometry(QtCore.QRect(410, 330, 81, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lineEditMejora.setFont(font)
+        self.lineEditMejora.setAcceptDrops(True)
+        self.lineEditMejora.setReadOnly(True)
+        self.lineEditMejora.setObjectName("lineEditMejora")
+        self.label_8 = QtWidgets.QLabel(self.groupBox)
+        self.label_8.setGeometry(QtCore.QRect(410, 310, 71, 17))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
         self.line_3 = QtWidgets.QFrame(self.toolBoxPage1)
         self.line_3.setGeometry(QtCore.QRect(30, 300, 521, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
@@ -89,7 +108,7 @@ class Ui_MainWindow(object):
         self.line_3.setObjectName("line_3")
         self.toolBox.addItem(self.toolBoxPage1, "")
         self.toolBoxPage2 = QtWidgets.QWidget()
-        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 571, 359))
+        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 571, 367))
         self.toolBoxPage2.setObjectName("toolBoxPage2")
         self.toolBox.addItem(self.toolBoxPage2, "")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -113,6 +132,7 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "Vel. atención operario M6 (minutos):"))
         self.label_7.setText(_translate("MainWindow", "Cantidad días producción:"))
         self.btnSimulacion.setText(_translate("MainWindow", "Simular"))
+        self.label_8.setText(_translate("MainWindow", "MEJORA:"))
 
 
 if __name__ == "__main__":
