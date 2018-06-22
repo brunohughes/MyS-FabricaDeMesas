@@ -79,7 +79,6 @@ class Formulario(QMainWindow):
         plt.legend(labels, loc="best")
         plt.axis('equal')
         plt.tight_layout()
-        plt.savefig('imagenes/grafico{0}.png'.format(nroEjecucion))        
         plt.gcf().canvas.set_window_title('Ejecucion nro {0}'.format(nroEjecucion))        
         plt.show()
 
