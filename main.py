@@ -30,13 +30,13 @@ class Formulario(QMainWindow):
         self.formulario.btnSimulacion.clicked.connect(self.simular)
 
     def iniciarVariables(self):
-        self.formulario.lineEdit_exp.setValue(1)
-        self.formulario.lineEdit_dias.setValue(20)
-        self.formulario.lineEdit_incrementoM4.setValue(50)
-        self.formulario.lineEdit_incrementoM6.setValue(30)
-        self.formulario.lineEdit_velOperM4.setValue(5)
-        self.formulario.lineEdit_velOperM6.setValue(10)
-        self.formulario.lineEdit_diasProd.setValue(10)
+        self.formulario.lineEditExp.setValue(1)
+        self.formulario.lineEditDias.setValue(20)
+        self.formulario.lineEditIncrementoM4.setValue(50)
+        self.formulario.lineEditIncrementoM6.setValue(30)
+        self.formulario.lineEditVelOperM4.setValue(5)
+        self.formulario.lineEditVelOperM6.setValue(10)
+        self.formulario.lineEditDiasProd.setValue(10)
 
     def calcularPorcentajes(self, solicitudesAtendidas, solicitudesSinAtender):
         total = solicitudesAtendidas + solicitudesSinAtender
@@ -124,13 +124,13 @@ class Formulario(QMainWindow):
     
     def obtenerParametros(self):
         variable = Variable()
-        variable.MES = int(self.formulario.lineEdit_exp.text())
-        variable.DIAS = int(self.formulario.lineEdit_dias.text())
-        variable.incrementoStockM4 = int(self.formulario.lineEdit_incrementoM4.text())
-        variable.incrementoStockM6 = int(self.formulario.lineEdit_incrementoM6.text())
-        variable.velOperM4 = int(self.formulario.lineEdit_velOperM4.text())
-        variable.velOperM6 = int(self.formulario.lineEdit_velOperM6.text())
-        variable.cantDiasProduccion = int(self.formulario.lineEdit_diasProd.text())
+        variable.MES = int(self.formulario.lineEditExp.text())
+        variable.DIAS = int(self.formulario.lineEditDias.text())
+        variable.incrementoStockM4 = int(self.formulario.lineEditIncrementoM4.text())
+        variable.incrementoStockM6 = int(self.formulario.lineEditIncrementoM6.text())
+        variable.velOperM4 = int(self.formulario.lineEditVelOperM4.text())
+        variable.velOperM6 = int(self.formulario.lineEditVelOperM6.text())
+        variable.cantDiasProduccion = int(self.formulario.lineEditDiasProd.text())
         return variable
 
         
