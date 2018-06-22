@@ -269,10 +269,10 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>420</x>
-         <y>330</y>
-         <width>81</width>
-         <height>21</height>
+         <x>410</x>
+         <y>320</y>
+         <width>111</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
@@ -292,10 +292,10 @@
       <widget class="QLabel" name="label_8">
        <property name="geometry">
         <rect>
-         <x>340</x>
-         <y>330</y>
-         <width>71</width>
-         <height>17</height>
+         <x>330</x>
+         <y>326</y>
+         <width>81</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -306,7 +306,7 @@
         </font>
        </property>
        <property name="text">
-        <string>MEJORA:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;MEJORA:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>

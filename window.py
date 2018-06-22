@@ -84,7 +84,7 @@ class Ui_MainWindow(object):
         self.btnSimulacion.setObjectName("btnSimulacion")
         self.lineEditMejora = QtWidgets.QLineEdit(self.groupBox)
         self.lineEditMejora.setEnabled(True)
-        self.lineEditMejora.setGeometry(QtCore.QRect(420, 330, 81, 21))
+        self.lineEditMejora.setGeometry(QtCore.QRect(410, 320, 111, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
         self.lineEditMejora.setReadOnly(True)
         self.lineEditMejora.setObjectName("lineEditMejora")
         self.label_8 = QtWidgets.QLabel(self.groupBox)
-        self.label_8.setGeometry(QtCore.QRect(340, 330, 71, 17))
+        self.label_8.setGeometry(QtCore.QRect(330, 326, 81, 21))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -132,7 +132,7 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "Vel. atención operario M6 (minutos):"))
         self.label_7.setText(_translate("MainWindow", "Cantidad de días de producción por mes:"))
         self.btnSimulacion.setText(_translate("MainWindow", "Simular"))
-        self.label_8.setText(_translate("MainWindow", "MEJORA:"))
+        self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">MEJORA:</span></p></body></html>"))
 
 
 if __name__ == "__main__":
