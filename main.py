@@ -55,9 +55,8 @@ class Formulario(QMainWindow):
         if cantEjecuciones > 1:
            print('Ejecuciones:' + str(cantEjecuciones))
            mejora=self.calcularMejora(listaPorcAtendidas[cantEjecuciones -2], listaPorcAtendidas[cantEjecuciones -1])
-           print('Mejora: {:.2f}%'.format(mejora))        
-           self.formulario.lineEditMejora.setText('{:.2f}%'.format(mejora))
-
+           print('Mejora: {:.2f}%'.format(mejora))
+           print ('mejora es igual a: ', mejora)   
         self.armarGrafico(cantEjecuciones,porcAtendidas,porcSinAtender)
 	
                 
@@ -70,7 +69,7 @@ class Formulario(QMainWindow):
         sizes = [porcAtendidasI, porcSinAtenderI]        
         colors = ['yellowgreen', 'lightcoral']
         explode = (0.1, 0)
-        
+        plt.figure()
         plt.pie(sizes, explode=explode, colors=colors, autopct='%.2f%%', shadow=True, startangle=90)
         plt.legend(labels, loc="best")
         plt.axis('equal')
