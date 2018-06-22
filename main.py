@@ -24,6 +24,7 @@ class Formulario(QMainWindow):
         self.iniciarVariables()
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
+        #self.formulario.btnGraficoDeBarras.clicked.connect(self.armarGraficoBarra)
 
     def iniciarVariables(self):
         self.formulario.lineEditExp.setValue(1)
@@ -53,13 +54,20 @@ class Formulario(QMainWindow):
         print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(promSolicitudesSinAtender), porcSinAtender ))        
 
         if cantEjecuciones > 1:
-           print('Ejecuciones:' + str(cantEjecuciones))
-           mejora=self.calcularMejora(listaPorcAtendidas[cantEjecuciones -2], listaPorcAtendidas[cantEjecuciones -1])
-           print('Mejora: {:.2f}%'.format(mejora))
-           print ('mejora es igual a: ', mejora)   
+            print('Ejecuciones:' + str(cantEjecuciones))
+            mejora=self.calcularMejora(listaPorcAtendidas[cantEjecuciones -2], listaPorcAtendidas[cantEjecuciones -1])
+            print('Mejora: {:.2f}%'.format(mejora))
+            print ('mejora es igual a: ', mejora)
+            self.armarGraficoBarra(listaPorcAtendidas)
+
+            if mejora > 15:
+                self.formulario.lineEditMejora.setText('{:.2f}%'.format(mejora))
+                self.formulario.lineEditMejora.setStyleSheet('QLineEdit { background-color: #7CFC00}')
+            else:
+                self.formulario.lineEditMejora.setText('{:.2f}%'.format(mejora)) 
+                self.formulario.lineEditMejora.setStyleSheet('QLineEdit { background-color: #B22222}')
+
         self.armarGrafico(cantEjecuciones,porcAtendidas,porcSinAtender)
-	
-                
         
     def armarGrafico(self,nroEjecucion, porcAtendidas, porcSinAtender):
 
@@ -77,6 +85,17 @@ class Formulario(QMainWindow):
         plt.gcf().canvas.set_window_title('Ejecucion nro {0}'.format(nroEjecucion))        
         plt.show()
 
+    def armarGraficoBarra(self,listaPorcentajes):
+        
+        plt.figure()
+        plt.ylabel('Porcentaje Solicitudes Atendidas')
+        plt.gcf().canvas.set_window_title('Solicitudes atendidas en cada ejecucion')        
+
+        cantEjec= len(listaPorcentajes) + 1
+        indiceEjec = np.arange(1,cantEjec) 
+        plt.axis([0, cantEjec, 0, 100])
+        plt.plot(indiceEjec, listaPorcentajes, 'ro')        
+        plt.show()
 
     def generarPedidos(self,pedidos):
         cantPedidosM4 = np.random.poisson(30)
