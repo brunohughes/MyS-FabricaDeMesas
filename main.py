@@ -22,9 +22,11 @@ class Formulario(QMainWindow):
 
         #seteamos las variables iniciales
         self.iniciarVariables()
+        
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
         self.formulario.btnGraficoDePuntos.clicked.connect(self.armarGraficoPuntos)
+        self.formulario.btnGraficoDeBarras.clicked.connect(self.armarGraficoBarras)
 
     def iniciarVariables(self):
         self.formulario.lineEditExp.setValue(1)
@@ -93,6 +95,28 @@ class Formulario(QMainWindow):
 
         plt.axis([0, cantEjec + 2, 0, 100])
         plt.plot(indiceEjec, listaPorcAtendidas,'ro')        
+        plt.show()
+
+    def armarGraficoBarras(self):
+
+        fig, ax = plt.subplots()
+        index = np.arange(len(listaPorcAtendidas))        
+        bar_width = 0.35
+        opacity = 0.4
+        error_config = {'ecolor': '0.3'}
+
+        ax.bar(index, listaPorcAtendidas, bar_width,
+                alpha=opacity, color='b',
+                yerr=index, error_kw=error_config,
+                label='Solicitudes atendidas')
+        
+        ax.set_xlabel('Ejecuciones')
+        ax.set_ylabel('Porcentaje')
+        ax.set_title('Solicitudes atendidas en cada ejecucion')
+        ax.set_xticklabels((''))
+        ax.legend()
+
+        fig.tight_layout()
         plt.show()
 
     def generarPedidos(self,pedidos):

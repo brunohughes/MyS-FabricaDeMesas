@@ -102,8 +102,11 @@ class Ui_MainWindow(object):
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.btnGraficoDePuntos = QtWidgets.QPushButton(self.groupBox)
-        self.btnGraficoDePuntos.setGeometry(QtCore.QRect(10, 370, 301, 31))
+        self.btnGraficoDePuntos.setGeometry(QtCore.QRect(10, 360, 301, 31))
         self.btnGraficoDePuntos.setObjectName("btnGraficoDePuntos")
+        self.btnGraficoDeBarras = QtWidgets.QPushButton(self.groupBox)
+        self.btnGraficoDeBarras.setGeometry(QtCore.QRect(10, 400, 301, 31))
+        self.btnGraficoDeBarras.setObjectName("btnGraficoDeBarras")
         self.line_3 = QtWidgets.QFrame(self.toolBoxPage1)
         self.line_3.setGeometry(QtCore.QRect(30, 300, 521, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
@@ -137,6 +140,7 @@ class Ui_MainWindow(object):
         self.btnSimulacion.setText(_translate("MainWindow", "Simular"))
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">MEJORA:</span></p></body></html>"))
         self.btnGraficoDePuntos.setText(_translate("MainWindow", "Gráfico de Puntos"))
+        self.btnGraficoDeBarras.setText(_translate("MainWindow", "Gráfico de Barras"))
 
 
 if __name__ == "__main__":
