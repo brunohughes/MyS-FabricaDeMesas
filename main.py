@@ -22,7 +22,7 @@ class Formulario(QMainWindow):
 
         #seteamos las variables iniciales
         self.iniciarVariables()
-        
+
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
         self.formulario.btnGraficoDePuntos.clicked.connect(self.armarGraficoPuntos)
@@ -99,6 +99,7 @@ class Formulario(QMainWindow):
 
     def armarGraficoBarras(self):
 
+        labels = np.arange(1, len(listaPorcAtendidas) + 1) 
         fig, ax = plt.subplots()
         index = np.arange(len(listaPorcAtendidas))        
         bar_width = 0.35
@@ -113,7 +114,9 @@ class Formulario(QMainWindow):
         ax.set_xlabel('Ejecuciones')
         ax.set_ylabel('Porcentaje')
         ax.set_title('Solicitudes atendidas en cada ejecucion')
-        ax.set_xticklabels((''))
+        ax.set_xticks(index)
+        ax.set_xticklabels(labels)
+
         ax.legend()
 
         fig.tight_layout()
