@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'window.ui'
 #
-# Created by: PyQt5 UI code generator 5.6
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         self.toolBox.setGeometry(QtCore.QRect(0, 0, 631, 501))
         self.toolBox.setObjectName("toolBox")
         self.toolBoxPage1 = QtWidgets.QWidget()
-        self.toolBoxPage1.setGeometry(QtCore.QRect(0, 0, 631, 439))
+        self.toolBoxPage1.setGeometry(QtCore.QRect(0, 0, 631, 447))
         self.toolBoxPage1.setObjectName("toolBoxPage1")
         self.groupBox = QtWidgets.QGroupBox(self.toolBoxPage1)
         self.groupBox.setGeometry(QtCore.QRect(20, 0, 601, 431))
@@ -101,9 +101,9 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
-        self.btnGraficoDeBarras = QtWidgets.QPushButton(self.groupBox)
-        self.btnGraficoDeBarras.setGeometry(QtCore.QRect(10, 370, 301, 31))
-        self.btnGraficoDeBarras.setObjectName("btnGraficoDeBarras")
+        self.btnGraficoDePuntos = QtWidgets.QPushButton(self.groupBox)
+        self.btnGraficoDePuntos.setGeometry(QtCore.QRect(10, 370, 301, 31))
+        self.btnGraficoDePuntos.setObjectName("btnGraficoDePuntos")
         self.line_3 = QtWidgets.QFrame(self.toolBoxPage1)
         self.line_3.setGeometry(QtCore.QRect(30, 300, 521, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
         self.line_3.setObjectName("line_3")
         self.toolBox.addItem(self.toolBoxPage1, "")
         self.toolBoxPage2 = QtWidgets.QWidget()
-        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 631, 439))
+        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.toolBoxPage2.setObjectName("toolBoxPage2")
         self.toolBox.addItem(self.toolBoxPage2, "")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -136,7 +136,7 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "Cantidad de días de producción por mes:"))
         self.btnSimulacion.setText(_translate("MainWindow", "Simular"))
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">MEJORA:</span></p></body></html>"))
-        self.btnGraficoDeBarras.setText(_translate("MainWindow", "Gráfico de Barras"))
+        self.btnGraficoDePuntos.setText(_translate("MainWindow", "Gráfico de Puntos"))
 
 
 if __name__ == "__main__":

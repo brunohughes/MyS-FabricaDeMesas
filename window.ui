@@ -32,7 +32,7 @@
        <x>0</x>
        <y>0</y>
        <width>631</width>
-       <height>439</height>
+       <height>447</height>
       </rect>
      </property>
      <attribute name="label">
@@ -309,7 +309,7 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;MEJORA:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="btnGraficoDeBarras">
+      <widget class="QPushButton" name="btnGraficoDePuntos">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -319,7 +319,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Gráfico de Barras</string>
+        <string>Gráfico de Puntos</string>
        </property>
       </widget>
      </widget>
@@ -342,8 +342,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>631</width>
-       <height>439</height>
+       <width>98</width>
+       <height>28</height>
       </rect>
      </property>
      <attribute name="label">
