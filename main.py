@@ -5,13 +5,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Variable import Variable
 from window import Ui_MainWindow
+from reporte import Ui_MainWindow1
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QMessageBox
 from PyQt5.QtGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
     
-class Formulario(QMainWindow):
+class Reporte(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
+        self.reporte = Ui_MainWindow1()
+        self.reporte.setup(self)
+    
+    def setearTexto(self,texto):
+    	self.reporte.plainTextEditReporte.setPlainText(texto)    	
 
+class Formulario(QMainWindow):
 
     #Constructor de la clase
     def __init__(self):
@@ -23,10 +32,21 @@ class Formulario(QMainWindow):
         self.iniciarVariables()
         self.vaciarLog()
 
+        self.reporte = Reporte()
+
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
         self.formulario.btnGraficoDePuntos.clicked.connect(self.armarGraficoPuntos)
         self.formulario.btnGraficoDeBarras.clicked.connect(self.armarGraficoBarras)
+        self.formulario.btnReporte.clicked.connect(self.armarReporte)
+
+
+
+    def armarReporte(self):
+        file = open("log.txt", "r")
+        self.reporte.setearTexto( file.read() )
+        self.reporte.show()
+
 
     def iniciarVariables(self):
         self.formulario.lineEditExp.setValue(1)
@@ -162,8 +182,6 @@ class Formulario(QMainWindow):
 
         fig.tight_layout()
         plt.show()
-
-
 
 
     def generarPedidos(self,pedidos,var):

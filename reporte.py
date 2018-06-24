@@ -8,8 +8,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+class Ui_MainWindow1(object):
+    def setup(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(662, 489)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -26,10 +26,11 @@ class Ui_MainWindow(object):
         self.groupBox.setObjectName("groupBox")
         self.plainTextEditReporte = QtWidgets.QPlainTextEdit(self.groupBox)
         self.plainTextEditReporte.setGeometry(QtCore.QRect(20, 30, 561, 391))
+        self.plainTextEditReporte.setReadOnly(True)
         self.plainTextEditReporte.setObjectName("plainTextEditReporte")
         self.toolBox.addItem(self.toolBoxPage1, "")
         self.toolBoxPage2 = QtWidgets.QWidget()
-        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.toolBoxPage2.setObjectName("toolBoxPage2")
         self.toolBox.addItem(self.toolBoxPage2, "")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -50,8 +51,8 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
+    ui = Ui_MainWindow1()
+    ui.setup(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
 
