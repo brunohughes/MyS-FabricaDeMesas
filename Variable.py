@@ -19,4 +19,6 @@ class Variable:
         self.incrementoStockM6 = 0
         self.velOperM4 = 0
         self.velOperM6 = 0
+        self.cantidadM4 = 0
+        self.cantidadM6 = 0        
         self.cantDiasProduccion = 0

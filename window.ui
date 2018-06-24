@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>662</width>
-    <height>489</height>
+    <width>661</width>
+    <height>588</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,10 @@
    <widget class="QToolBox" name="toolBox">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>20</x>
       <y>0</y>
-      <width>631</width>
-      <height>501</height>
+      <width>611</width>
+      <height>561</height>
      </rect>
     </property>
     <widget class="QWidget" name="toolBoxPage1">
@@ -31,8 +31,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>631</width>
-       <height>447</height>
+       <width>611</width>
+       <height>507</height>
       </rect>
      </property>
      <attribute name="label">
@@ -43,8 +43,8 @@
        <rect>
         <x>20</x>
         <y>0</y>
-        <width>601</width>
-        <height>441</height>
+        <width>611</width>
+        <height>541</height>
        </rect>
       </property>
       <property name="title">
@@ -254,7 +254,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>320</y>
+         <y>390</y>
          <width>261</width>
          <height>31</height>
         </rect>
@@ -270,7 +270,7 @@
        <property name="geometry">
         <rect>
          <x>410</x>
-         <y>320</y>
+         <y>390</y>
          <width>111</width>
          <height>31</height>
         </rect>
@@ -293,7 +293,7 @@
        <property name="geometry">
         <rect>
          <x>290</x>
-         <y>326</y>
+         <y>396</y>
          <width>121</width>
          <height>21</height>
         </rect>
@@ -313,7 +313,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>360</y>
+         <y>430</y>
          <width>261</width>
          <height>31</height>
         </rect>
@@ -326,7 +326,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>400</y>
+         <y>470</y>
          <width>261</width>
          <height>31</height>
         </rect>
@@ -339,7 +339,7 @@
        <property name="geometry">
         <rect>
          <x>290</x>
-         <y>400</y>
+         <y>470</y>
          <width>231</width>
          <height>31</height>
         </rect>
@@ -348,12 +348,58 @@
         <string>Ver Reporte</string>
        </property>
       </widget>
+      <widget class="QSpinBox" name="lineEditCantidadM4">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>290</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="lineEditCantidadM6">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>320</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>290</y>
+         <width>311</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cantidad de pedidos M4 (poisson):</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>320</y>
+         <width>311</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cantidad de pedidos M6 (poisson):</string>
+       </property>
+      </widget>
      </widget>
      <widget class="Line" name="line_3">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>300</y>
+        <y>370</y>
         <width>521</width>
         <height>20</height>
        </rect>

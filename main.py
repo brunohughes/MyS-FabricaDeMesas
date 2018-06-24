@@ -36,6 +36,9 @@ class Formulario(QMainWindow):
         self.formulario.lineEditVelOperM4.setValue(5)
         self.formulario.lineEditVelOperM6.setValue(10)
         self.formulario.lineEditDiasProd.setValue(10)
+        self.formulario.lineEditCantidadM4.setValue(30)
+        self.formulario.lineEditCantidadM6.setValue(25)
+
 
 
     def calcularPorcentajes(self, solicitudesAtendidas, solicitudesSinAtender):
@@ -163,9 +166,9 @@ class Formulario(QMainWindow):
 
 
 
-    def generarPedidos(self,pedidos):
-        cantPedidosM4 = np.random.poisson(30)
-        cantPedidosM6 = np.random.poisson(25)
+    def generarPedidos(self,pedidos,var):
+        cantPedidosM4 = np.random.poisson(var.cantidadM4)
+        cantPedidosM6 = np.random.poisson(var.cantidadM6)
 
         #Armo una lista con elemntos M4 y M6
         for _ in range(cantPedidosM4):
@@ -210,6 +213,9 @@ class Formulario(QMainWindow):
         variable.velOperM4 = int(self.formulario.lineEditVelOperM4.text())
         variable.velOperM6 = int(self.formulario.lineEditVelOperM6.text())
         variable.cantDiasProduccion = int(self.formulario.lineEditDiasProd.text())
+        variable.cantidadM4 = int(self.formulario.lineEditCantidadM4.text())
+        variable.cantidadM6 = int(self.formulario.lineEditCantidadM6.text())
+
         return variable
 
         
@@ -233,7 +239,7 @@ class Formulario(QMainWindow):
                     var.stockM4 += var.incrementoStockM4
                     var.stockM6 += var.incrementoStockM6
 
-                self.generarPedidos(pedidos)
+                self.generarPedidos(pedidos,var)
 
                 #Recorro la lista de solicitudes
                 for item in pedidos:   
