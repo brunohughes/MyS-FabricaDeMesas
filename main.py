@@ -37,14 +37,13 @@ class Formulario(QMainWindow):
         self.formulario.lineEditVelOperM6.setValue(10)
         self.formulario.lineEditDiasProd.setValue(10)
 
+
     def calcularPorcentajes(self, solicitudesAtendidas, solicitudesSinAtender):
         total = solicitudesAtendidas + solicitudesSinAtender
         porcAtendidas = ( solicitudesAtendidas * 100 ) / total
         porcSinAtender = ( solicitudesSinAtender * 100) / total
         return porcAtendidas, porcSinAtender
 
-    def calcularMejora(self,porc1, porc2):
-        return abs(porc1 - porc2)    
 
     def simular(self):
         print('---------------------------------------------------------------')
@@ -57,14 +56,14 @@ class Formulario(QMainWindow):
 
         if cantEjecuciones > 1:
             print('Ejecuciones:' + str(cantEjecuciones))
-            mejora=self.calcularMejora(listaPorcAtendidas[cantEjecuciones -2], listaPorcAtendidas[cantEjecuciones -1])
-            print('Mejora: {:.2f}%'.format(mejora))
+            diferencia = listaPorcAtendidas[cantEjecuciones -1] - listaPorcAtendidas[cantEjecuciones -2]
+            print('Diferencia: {:.2f}%'.format(diferencia))
 
-            self.formulario.lineEditMejora.setText('{:.2f}%'.format(mejora))            
-            if mejora > 15:                
-                self.formulario.lineEditMejora.setStyleSheet('QLineEdit { background-color: #7CFC00}')
+            self.formulario.lineEditDiferencia.setText('{:.2f}%'.format(diferencia))            
+            if diferencia > 0:                
+                self.formulario.lineEditDiferencia.setStyleSheet('QLineEdit { background-color: #7CFC00}')
             else:
-                self.formulario.lineEditMejora.setStyleSheet('QLineEdit { background-color: #B22222}')
+                self.formulario.lineEditDiferencia.setStyleSheet('QLineEdit { background-color: #B22222}')
 
         self.armarGrafico(cantEjecuciones,porcAtendidas,porcSinAtender)
         
@@ -100,13 +99,13 @@ class Formulario(QMainWindow):
     def armarGraficoBarras(self):
 
         labels = np.arange(1, len(listaPorcAtendidas) + 1) 
-        fig, ax = plt.subplots()
         index = np.arange(len(listaPorcAtendidas))        
         bar_width = 0.35
         opacity = 0.4
         error_config = {'ecolor': '0.3'}
+        fig, ax = plt.subplots()
 
-        ax.bar(index, listaPorcAtendidas, bar_width,
+        rects= ax.bar(index, listaPorcAtendidas, bar_width,
                 alpha=opacity, color='b',
                 yerr=index, error_kw=error_config,
                 label='Solicitudes atendidas')
@@ -115,12 +114,15 @@ class Formulario(QMainWindow):
         ax.set_ylabel('Porcentaje')
         ax.set_title('Solicitudes atendidas en cada ejecucion')
         ax.set_xticks(index)
-        ax.set_xticklabels(labels)
-
+        ax.set_xticklabels(labels)        
+        ax.text(2, 6, 'XXX', fontsize=15)
         ax.legend()
 
         fig.tight_layout()
         plt.show()
+
+
+
 
     def generarPedidos(self,pedidos):
         cantPedidosM4 = np.random.poisson(30)
