@@ -20,8 +20,8 @@ class Formulario(QMainWindow):
         self.formulario = Ui_MainWindow()
         self.formulario.setupUi(self)
 
-        #seteamos las variables iniciales
         self.iniciarVariables()
+        self.vaciarLog()
 
         #seteamos los eventos        
         self.formulario.btnSimulacion.clicked.connect(self.simular)
@@ -43,14 +43,43 @@ class Formulario(QMainWindow):
         porcAtendidas = ( solicitudesAtendidas * 100 ) / total
         porcSinAtender = ( solicitudesSinAtender * 100) / total
         return porcAtendidas, porcSinAtender
+    
+    def vaciarLog(self):
+        open("log.txt", "w").close()
 
+    def grabarLog(self,cantEjecuciones,var,promSolicitudesAtendidas, promSolicitudesSinAtender,diferencia):
+        text_file = open("log.txt", "a")
+
+        text = """
+--- Reporte de simulación N° {} ---
+        Parámetros utilizados:
+        Meses: {}
+        Días: {}
+        Días de producción: {}
+        Producción fija mensual M4: {}
+        Producción fija mensual M6: {}
+        Velocidad de atención M4 (min.): {}
+        Velocidad de atención M6 (min.): {}
+        Cantidad de pedidos M4: XXX
+        Cantidad de pedidos M6: XXX
+        ---
+        Total de solicitudes: XXX
+        Promedio de solicitudes atendidas x mes: {}
+        Promedio de solicitudes sin atender x mes: {}
+        Diferencia observada: {:.2f} %        
+        """.format(cantEjecuciones,var.MES,var.DIAS,var.cantDiasProduccion,var.incrementoStockM4,var.incrementoStockM6,
+        	var.velOperM4, var.velOperM6,promSolicitudesAtendidas, promSolicitudesSinAtender,diferencia)
+        text_file.write(text)
+        text_file.close()
 
     def simular(self):
-        print('---------------------------------------------------------------')
-        promSolicitudesAtendidas, promSolicitudesSinAtender = self.procesar()        
+        
+        promSolicitudesAtendidas, promSolicitudesSinAtender, var = self.procesar()        
         porcAtendidas, porcSinAtender = self.calcularPorcentajes(promSolicitudesAtendidas, promSolicitudesSinAtender)        
         listaPorcAtendidas.append(porcAtendidas)                      
         cantEjecuciones = len(listaPorcAtendidas)
+        diferencia=0
+        print('---------------------------------------------------------------')
         print('Promedio Solicitudes atendidas: {} ({:.2f}%) '.format(str(promSolicitudesAtendidas), porcAtendidas))
         print('Promedio Solicitudes NO atendidas: {} ({:.2f}%)'.format(str(promSolicitudesSinAtender), porcSinAtender ))        
 
@@ -65,7 +94,11 @@ class Formulario(QMainWindow):
             else:
                 self.formulario.lineEditDiferencia.setStyleSheet('QLineEdit { background-color: #B22222}')
 
+
+        self.grabarLog(cantEjecuciones,var,promSolicitudesAtendidas, promSolicitudesSinAtender,diferencia)
         self.armarGrafico(cantEjecuciones,porcAtendidas,porcSinAtender)
+
+
         
     def armarGrafico(self,nroEjecucion, porcAtendidas, porcSinAtender):
 
@@ -96,6 +129,8 @@ class Formulario(QMainWindow):
         plt.plot(indiceEjec, listaPorcAtendidas,'ro')        
         plt.show()
 
+
+
     def armarGraficoBarras(self):
 
         labels = np.arange(1, len(listaPorcAtendidas) + 1) 
@@ -114,9 +149,13 @@ class Formulario(QMainWindow):
         ax.set_ylabel('Porcentaje')
         ax.set_title('Solicitudes atendidas en cada ejecucion')
         ax.set_xticks(index)
-        ax.set_xticklabels(labels)        
-        ax.text(2, 6, 'XXX', fontsize=15)
+        ax.set_xticklabels(labels)                
         ax.legend()
+
+        i=0 
+        for x in listaPorcAtendidas:
+            ax.text(i - 0.15, x - 5, '{:.2f}%'.format(x), fontsize=10)
+            i +=1
 
         fig.tight_layout()
         plt.show()
@@ -212,7 +251,7 @@ class Formulario(QMainWindow):
         promedioSolicitudesAtendidas = int(np.mean(var.solicitudesAtendidasXMes))
         promedioSolicitudesSinAtender = int(np.mean(var.solicitudesSinAtenderXMes))
         
-        return promedioSolicitudesAtendidas, promedioSolicitudesSinAtender                
+        return promedioSolicitudesAtendidas, promedioSolicitudesSinAtender, var                
 
 
         

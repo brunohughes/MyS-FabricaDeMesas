@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.toolBoxPage1.setGeometry(QtCore.QRect(0, 0, 631, 447))
         self.toolBoxPage1.setObjectName("toolBoxPage1")
         self.groupBox = QtWidgets.QGroupBox(self.toolBoxPage1)
-        self.groupBox.setGeometry(QtCore.QRect(20, 0, 601, 431))
+        self.groupBox.setGeometry(QtCore.QRect(20, 0, 601, 441))
         self.groupBox.setObjectName("groupBox")
         self.label_0 = QtWidgets.QLabel(self.groupBox)
         self.label_0.setGeometry(QtCore.QRect(10, 40, 279, 17))
@@ -107,6 +107,9 @@ class Ui_MainWindow(object):
         self.btnGraficoDeBarras = QtWidgets.QPushButton(self.groupBox)
         self.btnGraficoDeBarras.setGeometry(QtCore.QRect(10, 400, 261, 31))
         self.btnGraficoDeBarras.setObjectName("btnGraficoDeBarras")
+        self.btnReporte = QtWidgets.QPushButton(self.groupBox)
+        self.btnReporte.setGeometry(QtCore.QRect(290, 400, 231, 31))
+        self.btnReporte.setObjectName("btnReporte")
         self.line_3 = QtWidgets.QFrame(self.toolBoxPage1)
         self.line_3.setGeometry(QtCore.QRect(30, 300, 521, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
@@ -114,7 +117,7 @@ class Ui_MainWindow(object):
         self.line_3.setObjectName("line_3")
         self.toolBox.addItem(self.toolBoxPage1, "")
         self.toolBoxPage2 = QtWidgets.QWidget()
-        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 98, 28))
+        self.toolBoxPage2.setGeometry(QtCore.QRect(0, 0, 631, 447))
         self.toolBoxPage2.setObjectName("toolBoxPage2")
         self.toolBox.addItem(self.toolBoxPage2, "")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -141,6 +144,7 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">DIFERENCIA:</span></p></body></html>"))
         self.btnGraficoDePuntos.setText(_translate("MainWindow", "Gráfico de Puntos"))
         self.btnGraficoDeBarras.setText(_translate("MainWindow", "Gráfico de Barras"))
+        self.btnReporte.setText(_translate("MainWindow", "Ver Reporte"))
 
 
 if __name__ == "__main__":
