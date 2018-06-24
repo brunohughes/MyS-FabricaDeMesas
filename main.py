@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Variable import Variable
 from window import Ui_MainWindow
-from reporte import Ui_MainWindow1
+from reporte import Ui_MainWindow as Ui_MainWindow1
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QMessageBox
 from PyQt5.QtGui import *
@@ -15,7 +15,7 @@ class Reporte(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         self.reporte = Ui_MainWindow1()
-        self.reporte.setup(self)
+        self.reporte.setupUi(self)
     
     def setearTexto(self,texto):
     	self.reporte.plainTextEditReporte.setPlainText(texto)    	
