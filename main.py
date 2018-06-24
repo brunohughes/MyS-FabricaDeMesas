@@ -70,7 +70,7 @@ class Formulario(QMainWindow):
     def vaciarLog(self):
         open("log.txt", "w").close()
 
-    def grabarLog(self,cantEjecuciones,var,promSolicitudesAtendidas, promSolicitudesSinAtender,diferencia):
+    def grabarLog(self,cantEjecuciones,var,promSolicitudesAtendidas, promSolicitudesSinAtender,totalSolicitudes,diferencia):
         text_file = open("log.txt", "a")
 
         text = """
@@ -83,21 +83,30 @@ class Formulario(QMainWindow):
         Producción fija mensual M6: {}
         Velocidad de atención M4 (min.): {}
         Velocidad de atención M6 (min.): {}
-        Cantidad de pedidos M4: XXX
-        Cantidad de pedidos M6: XXX
+        Cantidad de pedidos M4: {}
+        Cantidad de pedidos M6: {}
         ---
-        Total de solicitudes: XXX
+        Total de solicitudes: {}
         Promedio de solicitudes atendidas x mes: {}
         Promedio de solicitudes sin atender x mes: {}
         Diferencia observada: {:.2f} %        
-        """.format(cantEjecuciones,var.MES,var.DIAS,var.cantDiasProduccion,var.incrementoStockM4,var.incrementoStockM6,
-        	var.velOperM4, var.velOperM6,promSolicitudesAtendidas, promSolicitudesSinAtender,diferencia)
+        """.format(cantEjecuciones,
+        	var.MES,
+        	var.DIAS,
+        	var.cantDiasProduccion,
+        	var.incrementoStockM4, var.incrementoStockM6,        	
+        	var.velOperM4, var.velOperM6,
+        	var.cantidadM4,var.cantidadM6,
+        	totalSolicitudes,
+        	promSolicitudesAtendidas, promSolicitudesSinAtender,
+        	diferencia)
+
         text_file.write(text)
         text_file.close()
 
     def simular(self):
         
-        promSolicitudesAtendidas, promSolicitudesSinAtender, var = self.procesar()        
+        promSolicitudesAtendidas, promSolicitudesSinAtender, var , totalSolicitudes= self.procesar()        
         porcAtendidas, porcSinAtender = self.calcularPorcentajes(promSolicitudesAtendidas, promSolicitudesSinAtender)        
         listaPorcAtendidas.append(porcAtendidas)                      
         cantEjecuciones = len(listaPorcAtendidas)
@@ -118,7 +127,7 @@ class Formulario(QMainWindow):
                 self.formulario.lineEditDiferencia.setStyleSheet('QLineEdit { background-color: #B22222}')
 
 
-        self.grabarLog(cantEjecuciones,var,promSolicitudesAtendidas, promSolicitudesSinAtender,diferencia)
+        self.grabarLog(cantEjecuciones,var,promSolicitudesAtendidas, promSolicitudesSinAtender,totalSolicitudes,diferencia)
         self.armarGrafico(cantEjecuciones,porcAtendidas,porcSinAtender)
 
 
@@ -274,8 +283,9 @@ class Formulario(QMainWindow):
 
         promedioSolicitudesAtendidas = int(np.mean(var.solicitudesAtendidasXMes))
         promedioSolicitudesSinAtender = int(np.mean(var.solicitudesSinAtenderXMes))
-        
-        return promedioSolicitudesAtendidas, promedioSolicitudesSinAtender, var                
+        totalSolicitudes = int(np.sum(var.solicitudesAtendidasXMes)) + int(np.sum(var.solicitudesSinAtenderXMes))
+
+        return promedioSolicitudesAtendidas, promedioSolicitudesSinAtender, var, totalSolicitudes
 
 
         
